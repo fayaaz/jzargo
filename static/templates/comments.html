@@ -1,0 +1,58 @@
+<div class="comments-container">
+{%for comment in comments reversed %}
+	<div class="row">
+		<div class="col-md-1 col-md-offset-1 col-xs-12 ">
+			<div class="btn btn-circle btn-user" style="background-image: url(http://robohash.org/{{ comment.0.split|join:'_'}}.png?size=75x75&set=set1);">
+	 		</div>
+	 	</div>
+	 	<div class="col-md-6 col-md-offset-0 col-xs-offset-2 col-xs-8  comment-body">
+	 		<p class="btnText">{{comment.1}} by {{comment.0}}</p> 
+	 		<p class="commentText">{{comment.2}}</p>
+	 	</div>
+ 	</div>
+
+{%endfor%}
+
+ 	<div class="row">
+ 		<div class="col-md-offset-1 col-md-1">
+	 		<a class="show-comment show-comment-hide  btn btn-circle btn-comment">
+				<i class="fa fa-comments-o animated"></i>
+			</a>
+		</div>
+ 	</div>
+
+</div>
+<div class="comment-form row" style="display: none;">
+	<div class="col-md-offset-1 col-md-6">
+	<form id= "comment-form"class="form-horizontal" action="/comment/" method="post">
+	{% csrf_token %}
+	<table class="table">
+		{% for field in form %}
+			<tr>
+				<td>
+            		{{ field.label_tag }}
+				</td>
+				<td>				
+       				{{ field.errors }}
+             		{{ field }}
+        		</td>
+        
+        	
+
+		{%endfor%}
+	</table>
+<div class="row">
+	<div class="col-md-offset-5 col-md-2">
+		<a id = "s{{blogpost.4}}" href="#1" class="submit-comment btn btn-circle btn-comment">
+	         <i class="fa fa-check animated"></i>
+	    </a>
+   </div>
+    <div class="col-md-2">
+    <a class="hide-comment btn btn-circle btn-comment">
+		<i class="fa fa-times-circle animated"></i>
+	</a>
+	</div>
+</div>
+	</form>
+</div>
+</div>
