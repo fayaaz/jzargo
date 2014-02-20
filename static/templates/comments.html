@@ -1,11 +1,11 @@
 <div class="comments-container">
 {%for comment in comments reversed %}
 	<div class="row">
-		<div class="col-md-1 col-md-offset-1 col-xs-12 ">
+		<div class="col-md-1 col-md-offset-1 col-xs-offset-0 col-xs-12 ">
 			<div class="btn btn-circle btn-user" style="background-image: url(http://robohash.org/{{ comment.0.split|join:'_'}}.png?size=75x75&set=set1);">
 	 		</div>
 	 	</div>
-	 	<div class="col-md-6 col-md-offset-0 col-xs-offset-2 col-xs-8  comment-body">
+	 	<div class="col-md-6 col-md-offset-0 col-xs-offset-1 col-xs-9  comment-body">
 	 		<p class="btnText">{{comment.1}} by {{comment.0}}</p> 
 	 		<p class="commentText">{{comment.2}}</p>
 	 	</div>
