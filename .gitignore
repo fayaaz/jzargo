@@ -5,3 +5,6 @@ db.sqlite3
 *.log
 error.log.save
 jzargo/wsgi.py
+media/upload/blogpost/steamos.jpg
+static/img/bg.jpg
+static/img/b2g.jpg

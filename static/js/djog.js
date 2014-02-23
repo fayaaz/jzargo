@@ -103,7 +103,7 @@ $("body").delegate("button.btn-month", 'click', function(){
 	    success: function(response, status, xhr){
 	    	pageRefresh($(response),0);
 	    	$( "div.months" ).fadeOut("fast");	
-			btn.removeClass("months-link-active").addClass("months-link");
+			$("a.months-link-active").removeClass("months-link-active").addClass("months-link");
 		}
 	});
 });
