@@ -7,6 +7,21 @@ from django.utils import simplejson as json
 
 # Create your views here.
 
+def month_post_items(filterObjs):
+    
+    blogPosts = []
+    first = True
+    for obj in filterObjs:
+        if first:
+            first = False
+            month = obj.pub_date.strftime('%B %Y')
+        blogPosts.append((obj.title, obj.body, obj.pub_date, obj.image, obj.id))
+    
+    return{'blogposts': blogPosts,
+           'month': month
+           }
+    
+    
 def template_post_items(postObj):
     
     '''returns the items needed for creating a blog post page. Includes: blogpost, comments and add comment form'''
@@ -70,7 +85,7 @@ def previous_post(request, id):
     
     if request.method == 'GET':
         
-        if not type(previousPost) =='dict':    
+        if previousPost:
             previousPostItems = template_post_items(previousPost)
             
             return render_to_response('blogpost.html', previousPostItems, context )
@@ -91,7 +106,17 @@ def add_comment(request, id):
             add_comment_to_post(id, name, comment)
             
             return get_post(request,id)
-            
-            
+        
         else:
             return False
+        
+def get_month(request):
+    
+    if request.method == 'GET':
+        context = RequestContext(request)
+        monthYear=request.GET['month'].split('-')
+        month = monthYear[0]
+        year = monthYear[1]
+        posts = blog.posts.get_posts_by_month(month, year)
+        postItems = month_post_items(posts)
+        return render_to_response('month.html', postItems, context)

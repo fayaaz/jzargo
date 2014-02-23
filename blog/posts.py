@@ -1,5 +1,9 @@
 from blog.models import BlogPost
 from django.db.models.base import ObjectDoesNotExist
+import datetime
+
+
+######################################################################################
 
 
 def get_latest_post():
@@ -40,14 +44,24 @@ def get_previous_post(originalID):
             return previousPost    
     except ObjectDoesNotExist:
        return False
+   
+def get_posts_by_month(month, year):
+    
+    postsFromMonth = BlogPost.objects.filter(pub_bool=True, pub_date__month=month, pub_date__year=year)
+    
+    return postsFromMonth
 
 def distinct_months():
     
     allPosts = BlogPost.objects.filter(pub_bool = True)
-    blogMonths = []
+    blogMonths = [('All','All')]
     for post in allPosts:
-        monthYear = (post.pub_date.date().month, post.pub_date.date().year)
-        if monthYear not in blogMonths:
-            blogMonths.append(monthYear)
+        year = str(post.pub_date.date().year)
+        month = str(post.pub_date.date().month)
+        wordMonth = post.pub_date.date().strftime("%B") 
+        monthYear = wordMonth + " " + year
+        monthYearID = month + '-' + year
+        if (monthYear, monthYearID) not in blogMonths:
+            blogMonths.append((monthYear, monthYearID))
     return blogMonths
         

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +31,7 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container nav-container">
+        <div class="container nav-container nav-month">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
@@ -60,25 +61,34 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#">Archive</a>
+                    <li>
+                        <a class="months-link">Months</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">About</a>
+                        <a href="#">Who?</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>
-    <div id='page-content'>
-    <div id="divError" class="alert alert-warning alert-dismissable" style="display: none;">
-  		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	</div>
-		{% block content %}
-		{% endblock %}
+{% load months %}
+    <div class='months container-fluid' style="display: none;">
+    	<div class='row'>
+    		<div class="col-md-9 col-md-offset-2">
+
+    			{% get_months%}
+
+    		</div>
+
+    	</div>
     </div>
+    </nav>
+   
+   <div id="page-content">
+    {% block content %}
+    {% endblock %}
+   </div>
     <!-- Core JavaScript Files -->
     <script src="{{STATIC_URL}}js/jquery.js"></script>
     <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>

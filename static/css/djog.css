@@ -1,6 +1,41 @@
 body
 {
--webkit-text-stroke: 1px transparent;
+	-webkit-text-stroke: 1px transparent;
+
+    font-family: 'Rosario',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #DDDDDD;
+    
+	/* IE10 Consumer Preview */ 
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,1) 100%) fixed, url('../img/bg.jpg') fixed ;
+	
+	/* Mozilla Firefox */ 
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.8)  0%, rgba(0,0,0,1) 100%) fixed, url('../img/bg.jpg') fixed;
+	
+	/* Opera */ 
+	background: -o-linear-gradient(top, rgba(0,0,0,0.8)  0%, rgba(0,0,0,1) 100%) fixed, url('../img/bg.jpg') fixed;
+	
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, top, bottom, color-stop(0,rgba(0,0,0,0.8) ), color-stop(1, rgba(0,0,0,1) )) fixed, url('static/img/bg.jpg') fixed;
+	
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.8)  0%, rgba(0,0,0,1)  100%) fixed, url('../img/bg.jpg') fixed;
+	
+	/* W3C Markup, IE10 Release Preview */ 
+	/*background: linear-gradient(to bottom right, rgba(0,0,0,0.6)  50%, rgba(0,0,0,1)  100%) fixed, url('./img/bg.jpg') fixed;
+	*/
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	background-size: cover;
+}
+
+.months{
+	padding: 0 0 10px 0;
+	background:rgba(0,0,0,0.5);
+}
+
+.nav-month{
+	background:rgba(0,0,0,0.5);
 }
 
 .post-nav {
@@ -42,7 +77,7 @@ pre{
 
 .btn-title{
     
-    margin: 5px 0 5px 0;
+    margin: 15px 0 0 0;
 }
 
 .btn-loading{
@@ -185,4 +220,8 @@ pre{
 @keyframes ball_moveG { 
     0% { transform: rotate(0deg) }
     100% { transform: rotate(360deg) }
+}
+
+.months-container{
+	padding: 40px 0 0 40px;
 }

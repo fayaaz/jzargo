@@ -4,6 +4,12 @@ from taggit.managers import TaggableManager
 from django.core.exceptions import ValidationError
 import datetime
 
+###########################################
+#          Settings
+
+markdown_extensions = ['tables', 'toc' , 'nl2br', 'wikilinks']
+
+
 def validate_only_one_instance(obj):
     ''' Used for making sure only one entry exists on a model. For example the title of the site '''
     model = obj.__class__
@@ -60,7 +66,7 @@ class BlogPost(models.Model):
     def save(self):
         '''Extra methods for save'''
         #Save the markdown to HTML
-        self.body = markdown(self.body_markdown)
+        self.body = markdown(self.body_markdown, extensions=markdown_extensions)
         
         #add dates if being created, change modified date if not
         if not self.id:

@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^previous/(\w+)/$', 'blog.views.previous_post', name='get_previous'),
     url(r'^postpage/(\w+)/$', 'blog.views.get_post', name='get_post'),
     url(r'^addcomment/(\w+)/$', 'blog.views.add_comment', name='add_comment'),
-    
+    url(r'^month/$', 'blog.views.get_month', name='add_comment'),
 )
 
 
