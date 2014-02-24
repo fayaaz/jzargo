@@ -51,7 +51,7 @@ class BlogPost(models.Model):
     '''A gallery for projects and art pieces'''
     
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField(default=0, editable=False)
+    pub_date = models.DateTimeField(default="0", editable=False)
     pub_bool = models.BooleanField('Published?', default=False)
     body_markdown = models.TextField('Entry Body', help_text='Write in Markdown! <a href=\'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet/\'  target=\'_blank\'>Help</a>', blank=True)
     body = models.TextField('Entry HTML', help_text='HTML from markdown', blank=True)
@@ -75,9 +75,14 @@ class BlogPost(models.Model):
         self.modified = datetime.datetime.today()
         
         #if it's ready to be published add modify date
-        if (not self.pub_date) and self.pub_bool:
-            self.pub_date = datetime.datetime.today()
+        if (not self.pub_date) or (self.pub_date=="0"):
+            if self.pub_bool:
+                self.pub_date = datetime.datetime.today()
         
+            else:
+                self.pub_date = "0"
+            
+            
         super(BlogPost, self).save() # Call the "real" save() method.
         
 

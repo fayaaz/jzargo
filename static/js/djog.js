@@ -25,7 +25,7 @@ $("body").delegate("a.submit-comment", 'click', function(event){
     // callback handler that will be called on success
     requests.done(function (response, textStatus, jqXHR){
         // log a message to the console
-        pageRefresh($(response), $('div.comments-container').offset().top);
+        pageRefresh($(response), $('div.comments-container').offset().top-40);
     });
 
     // callback handler that will be called on failure
@@ -58,7 +58,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(){
 		 	var ct = xhr.getResponseHeader("content-type") || "";
 	    	//if returned data is HTML (new page), refresh the page
 	    	if (ct.indexOf('html') > -1) {
-	      		pageRefresh($(response),$('#page-content').position().top);
+	      		pageRefresh($(response),$('#page-content').position().top-40);
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
@@ -101,7 +101,7 @@ $("body").delegate("button.btn-month", 'click', function(){
 	    url: href,
 	    context: document.body,
 	    success: function(response, status, xhr){
-	    	pageRefresh($(response),$('#page-content').position().top);
+	    	pageRefresh($(response),$('#page-content').position().top-40);
 	    	$( "div.months" ).fadeOut("fast");	
 			$("a.months-link-active").removeClass("months-link-active").addClass("months-link");
 		}
@@ -115,7 +115,7 @@ $("body").delegate("a.post-link", 'click', function(e){
 	    url: href,
 	    context: document.body,
 	    success: function(response, status, xhr){
-	    	pageRefresh($(response),$('#page-content').position().top);
+	    	pageRefresh($(response),$('#page-content').position().top-40);
 	    	$( "div.months" ).fadeOut("fast");	
 			$("a.months-link-active").removeClass("months-link-active").addClass("months-link");
 		}

@@ -8,3 +8,5 @@ jzargo/wsgi.py
 media/upload/blogpost/steamos.jpg
 static/img/bg.jpg
 static/img/b2g.jpg
+static/img/header-bg.jpg
+media/upload/blogpost/jquery_white_contur.png
