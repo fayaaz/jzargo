@@ -58,9 +58,17 @@ def latest_post(request):
 def get_post(request, id):
     context = RequestContext(request)
     post = blog.posts.get_post(id)
-    postItems = template_post_items(post)
-    return render_to_response('blogpost.html', postItems, context )
-    
+    if post.pub_bool:
+        postItems = template_post_items(post)
+        return render_to_response('blogpost.html', postItems, context )
+
+def permanent_post(request, id):
+    context = RequestContext(request)
+    post = blog.posts.get_post(id)
+    if post.pub_bool:
+        postItems = template_post_items(post)
+        return render_to_response('index.html', postItems, context )
+
 
 def next_post(request, id):
     context = RequestContext(request)

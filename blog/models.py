@@ -23,7 +23,7 @@ class Title(models.Model):
     '''Title of the site: only allows one entry'''    
     
     title = models.CharField(max_length=255)
-    
+    tag = models.CharField(max_length=255, blank=True, null=True)
     def clean(self):
         validate_only_one_instance(self)
 

@@ -58,7 +58,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(){
 		 	var ct = xhr.getResponseHeader("content-type") || "";
 	    	//if returned data is HTML (new page), refresh the page
 	    	if (ct.indexOf('html') > -1) {
-	      		pageRefresh($(response),0);
+	      		pageRefresh($(response),$('#page-content').position().top);
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
@@ -75,7 +75,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(){
 $( "body" ).delegate( "a.show-comment", 'click', function(){
 	$(this).removeClass("show-comment").addClass("hide-comment");
 	$( "div.comment-form" ).fadeIn( "fast");
-	var scrollBottom = $(window).scrollTop() + $(window).height() + 1000;
+	var scrollBottom = $(window).scrollTop() + $(window).height() + 500;
 	$("html, body").animate({ scrollTop: scrollBottom }, 500, 'easeInOutExpo');
 });
 $( "body" ).delegate( "a.hide-comment", 'click', function(){
@@ -86,7 +86,7 @@ $( "body" ).delegate( "a.hide-comment", 'click', function(){
 $( "body" ).delegate( "a.months-link", 'click', function(){
 	$( "div.months" ).fadeIn("fast");
 	$(this).removeClass("months-link").addClass("months-link-active");
-
+	
 	});
 	
 $( "body" ).delegate( "a.months-link-active", 'click', function(){
@@ -96,18 +96,37 @@ $( "body" ).delegate( "a.months-link-active", 'click', function(){
 	});
 
 $("body").delegate("button.btn-month", 'click', function(){
-	var btn = $(this);
+	var href = $(this).attr('href');
 	$.ajax({
-	    url: 'month/?month='+btn.attr('id'),
+	    url: href,
 	    context: document.body,
 	    success: function(response, status, xhr){
-	    	pageRefresh($(response),0);
+	    	pageRefresh($(response),$('#page-content').position().top);
 	    	$( "div.months" ).fadeOut("fast");	
 			$("a.months-link-active").removeClass("months-link-active").addClass("months-link");
 		}
 	});
 });
+
+$("body").delegate("a.post-link", 'click', function(e){
+	e.preventDefault();
+	var href = $(this).attr('href');
+	$.ajax({
+	    url: href,
+	    context: document.body,
+	    success: function(response, status, xhr){
+	    	pageRefresh($(response),$('#page-content').position().top);
+	    	$( "div.months" ).fadeOut("fast");	
+			$("a.months-link-active").removeClass("months-link-active").addClass("months-link");
+		}
+	});
+});
+
 function applyClasses(){
+	$("#page-header").imageScroll({
+		mediaWidth: 2560,
+		mediaHeight: 1440
+	});
 	$("code").addClass("prettyprint");
 	$("div.comment-body").find("table").addClass("table table-condensed");
 	PR.prettyPrint();
@@ -122,3 +141,4 @@ function pageRefresh(content, direction){
 	
 		});	
 	}
+	

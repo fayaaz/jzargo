@@ -1,26 +1,44 @@
 <section id="months" class="months-container">
-	<h1>{{month}}</h1>
-{%for blogpost in blogposts reversed %}
-	{% if forloop.counter|divisibleby:2 %}
-  		<div class="row">
-        	<div class="col-md-offset-2 col-md-2 col-xs-offset-1 col-xs-10">
-        		<div class="btn btn-circle btn-title" style="background-image: url({{MEDIA_URL}}{{ blogpost.3 }});">
-        		</div>
-        	</div>
-        	<div class="col-md-6 col-md-offset-0 col-xs-offset-1 col-xs-10">
-            	<h1>{{ blogpost.0 }}</h1>
-            	<p class="btnText">Published: {{blogpost.2}}</p>
-            </div>
+	<div class="row">
+	    <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
+			<h1>{{month}}</h1>
 		</div>
-	{% else %}
-     <div class="col-md-6 col-md-offset-2 col-xs-offset-1 col-xs-10">
-         <h1>{{ blogpost.0 }}</h1>
-         <p class="btnText">Published: {{blogpost.2}}</p>
-     </div>
-     <div class="col-md-offset-0 col-md-2 col-xs-offset-1 col-xs-10">
-		<div class="btn btn-circle btn-title" style="background-image: url({{MEDIA_URL}}{{ blogpost.3 }});">
 	</div>
-     </div>
-	{% endif %}
+
+{%for blogpost in blogposts reversed %}
+
+	<div class="row row-month">
+
+		{% if forloop.counter|divisibleby:2 %}
+		
+
+	     <div class="col-md-6 col-md-offset-2 col-xs-offset-1 col-xs-10">
+	         <a href="{{ROOT_URL}}post/{{ blogpost.4}}" class = "post-link"><h2>{{ blogpost.0 }} </h2></a>
+	         <p class="btnText">Published: {{blogpost.2}}</p>
+	     </div>
+	     <div class="col-md-offset-0 col-md-2 col-xs-offset-1 col-xs-10">
+			<div class="btn btn-circle btn-title" style="background-image: url({{MEDIA_URL}}{{ blogpost.3 }});">
+			</div>
+	     </div>	
+
+		
+		{% else %}
+		
+		<div class="col-md-offset-2 col-md-2 col-xs-offset-1 col-xs-10">
+			<div class="btn btn-circle btn-title" style="background-image: url({{MEDIA_URL}}{{ blogpost.3 }});">
+			</div>
+		</div>
+		<div class="col-md-6 col-md-offset-0 col-xs-offset-1 col-xs-10">
+			<h2>{{ blogpost.0 }}</h2>
+			<p class="btnText">Published: {{blogpost.2}}</p>
+		</div>
+
+
+	     
+		{% endif %}
+
+	</div>
+
 {%endfor%}
+
 </section>
