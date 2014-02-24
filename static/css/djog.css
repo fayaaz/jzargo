@@ -30,7 +30,7 @@ body
 }
 
 .months{
-	padding: 0 0 10px 0;
+	padding: 0 10px 10px 10px;
 	background:rgba(0,0,0,0.5);
 }
 
@@ -223,11 +223,11 @@ pre{
 }
 
 .months-container{
-	padding: 40px 0 0 40px;
+	padding: 40px 0 40px 0;
 }
 
 .row-month{
-	padding: 20px 0 0 20px;
+	padding: 20px 0  20px 0;
 }
 
 .header-section {
@@ -260,4 +260,8 @@ pre{
 .tag-line{
 	text-align: center;
 	color: #000000;
+}
+
+#page-content{
+	overflow:hidden;
 }
