@@ -6,42 +6,38 @@
         	</div>
         		<div class="col-md-6 col-md-offset-0 col-xs-offset-1 col-xs-10">
             		<h1>{{ blogpost.0 }}</h1>
-            		<p class="btnText">last modified: {{blogpost.2}}</p>
+            		<p class="btnText">Published: {{blogpost.2}}</p>
             	</div>
            	</div>
         <div class="row">
             <div class="col-md-8 col-xs-offset-0 col-md-offset-2 comment-body">
                 {{ blogpost.1|safe }}
-                <p class="btnText"><a href="{% url "root" %}post/{{blogpost.4}}">permalink</a> </p>
+                <p class="btnText"><a href="{% url "root" %}perm/{{blogpost.4}}">permalink</a> </p>
                 <p>Tags: {%for tag in blogpost.5%}{{tag}} {%endfor%}</p>
             </div>
         </div>
-<div class= "row">
-    <div id="p{{blogpost.4}}" class="col-md-offset-2 col-md-3 post-nav-previous" >
-    	<a id="previous" class="postnav">
-    		<i class="fa fa-angle-left"></i> <small>PREVIOUS</small>
+<div class= "nav-row">
+    <div id="p{{blogpost.4}}" class="post-left" >
+    	<a id="previous" class="postnav btn btn-circle btn-comment">
+    		<i class="fa fa-angle-left animated"></i>
     	</a>
     </div>
     
-    <div class = "col-md-2" >
-    	<div id="bowlG" class= "loading-animation">
-			<div id="bowl_ringG">
-				<div class="ball_holderG">
-					<div class="ballG">
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
+
     
-    <div id="n{{blogpost.4}}" class= "col-md-3 post-nav-next">
-    	<a id = "next" class="postnav">
-    		<small>NEXT</small> <i  class="fa fa-angle-right"></i>
+    <div id="n{{blogpost.4}}" class= "post-right">
+    	<a id = "next" class="postnav btn btn-circle btn-comment">
+    		<i class="fa fa-angle-right animated"></i>
       	</a>
     </div>
    
 </div>
-   
+
+<div class= "nav-row">
+    	<div class= "loading-animation">
+    		<div class="loader"></div>
+		</div>
+</div>
         
         	{% include "comments.html" %} 
     </section>

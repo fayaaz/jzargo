@@ -48,10 +48,6 @@ a:hover {
 	cursor: hand;
 }
 
-.post-nav-next {
-	text-align: right;
-}
-
 .nav-container {
 	margin-left: 0px;
 	padding-right: 20px;
@@ -262,6 +258,122 @@ pre{
 	color: #000000;
 }
 
+.nav-row{
+  position: fixed;
+  padding: 0 10px 0 10px;
+  top: 48%;
+  width: 98%;
+}
+
+
+.post-right{
+	float:right;	
+}
+
+.post-left{
+	float:left;	
+}
+
 #page-content{
 	overflow:hidden;
+}
+
+h2,
+h3{
+	padding: 40px 0 0 0;
+}
+
+.loading-animation{
+	width: 50%; 
+	margin: 0 auto;
+
+}
+
+@-webkit-keyframes expand {
+  0% {
+    -webkit-transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+  }
+
+  100% {
+    z-index: 1;
+  }
+}
+@-moz-keyframes expand {
+  0% {
+    -moz-transform: scale(0);
+  }
+
+  50% {
+    -moz-transform: scale(1);
+  }
+
+  100% {
+    z-index: 1;
+  }
+}
+@-o-keyframes expand {
+  0% {
+    -o-transform: scale(0);
+  }
+
+  50% {
+    -o-transform: scale(1);
+  }
+
+  100% {
+    z-index: 1;
+  }
+}
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    z-index: 1;
+  }
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -25px 0 0 -25px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8.33333px white;
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
+.loader:before, .loader:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  margin: -26px 0 0 -26px;
+  border-radius: 50%;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+}
+.loader:before {
+  background-color: black;
+  -webkit-animation: expand 1.6s linear infinite both;
+  -moz-animation: expand 1.6s linear infinite both;
+  animation: expand 1.6s linear infinite both;
+}
+.loader:after {
+  background-color: white;
+  -webkit-animation: expand 1.6s linear 0.8s infinite both;
+  -moz-animation: expand 1.6s linear 0.8s infinite both;
+  animation: expand 1.6s linear 0.8s infinite both;
 }

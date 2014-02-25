@@ -108,6 +108,17 @@ $("body").delegate("button.btn-month", 'click', function(){
 	});
 });
 
+$(window).scroll(function() {
+    if ($(window).scrollTop() > $( window ).height()/2) {
+        $("div.post-right").fadeIn("fast");
+        $("div.post-left").fadeIn("fast");        
+    }
+    else {
+        $("div.post-right").fadeOut("fast");
+        $("div.post-left").fadeOut("fast");
+    }
+});
+
 $("body").delegate("a.post-link", 'click', function(e){
 	e.preventDefault();
 	var href = $(this).attr('href');
