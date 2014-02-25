@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	applyClasses();
+	$("div.post-right").fadeOut("fast");
+    $("div.post-left").fadeOut("fast");
 });
 
 
@@ -109,7 +111,7 @@ $("body").delegate("button.btn-month", 'click', function(){
 });
 
 $(window).scroll(function() {
-    if ($(window).scrollTop() > $( window ).height()/2) {
+    if ($(window).scrollTop() > $( window ).height()*0.3) {
         $("div.post-right").fadeIn("fast");
         $("div.post-left").fadeIn("fast");        
     }
