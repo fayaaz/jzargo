@@ -1,8 +1,10 @@
 $(document).ready(function() {
 	applyClasses();
 	$("#page-header").imageScroll({
-		mediaWidth: 2560,
-		mediaHeight: 1440
+		mediaWidth: 2048,
+		mediaHeight: 915,
+		coverRatio: 0.7,
+		speed: 0.3,
 	});
 
 });
@@ -52,18 +54,20 @@ requests.always(function () {
 // prevent default posting of form
 event.preventDefault();
 });
-$( "body" ).delegate( "a.postnav", 'click', function(){
-	var direction = $(this).attr('id');
+$( "body" ).delegate( "a.postnav", 'click', function(e){
+	e.preventDefault();
+	var urlAjax = $(this).attr('href');
 	var postid = $(this).parent('div').attr('id').substring(1);
 	$("div.loading-animation").css("visibility", "visible");
 	$.ajax({
-	    url: direction+'/'+postid+'/',
+	    url: urlAjax,
 	    context: document.body,
 	    success: function(response, status, xhr){
 		 	var ct = xhr.getResponseHeader("content-type") || "";
 	    	//if returned data is HTML (new page), refresh the page
 	    	if (ct.indexOf('html') > -1) {
 	      		pageRefresh($(response),$('#page-content').position().top-40);
+	      		pageMove();
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
@@ -113,22 +117,34 @@ $("body").delegate("button.btn-month", 'click', function(){
 	});
 });
 
-var stateScr = 0;
-$(window).scroll(function() {
+var stateScr = 1;
+
+$(window).scroll(function(){
+	pageMove();
+});
+
+$(window).load(function(){
+	//on load check where navigation should go and fade in slowly to avoid jarring effect	
+	pageMove();
+	$("body").css('visibility','visible').hide().fadeIn('slow');
+});
+
+
+function pageMove() {
 	
-    if ($(window).scrollTop() > $('#page-content').position().top-80) {
+    if ($(window).scrollTop() >= $('#page-content').position().top-60) {
     	if (stateScr == 0){
-        	$("div.nav-row").animate({top : "45%"}, "slow", "easeOutBack" );
+        	$("div.nav-row, div.nav-row-loader").animate({top : "45%"}, "fast", "easeOutBack" );
         	stateScr = 1;
         } 
     }
     else {
     	if(stateScr == 1){ 
-        	$("div.nav-row").animate({ top : "85%"}, "slow", "easeOutBack" );
+        	$("div.nav-row, div.nav-row-loader").animate({ top : "85%"}, "fast", "easeOutBack" );
     		stateScr = 0;
     	}
     }
-});
+}
 
 
 $("body").delegate("a.post-link", 'click', function(e){

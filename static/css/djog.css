@@ -48,6 +48,10 @@ a:hover {
 	cursor: hand;
 }
 
+.comments-container{
+	z-index: 2;
+}
+
 .nav-container {
 	margin-left: 0px;
 	padding-right: 20px;
@@ -100,7 +104,8 @@ code{
 
 .comment-body{
 
-	margin-top: 20px
+	margin-top: 20px;
+	z-index: 2;
 }
 
 .table{
@@ -235,7 +240,7 @@ code{
     width: 100%;
     margin-top: 0px;
 	margin-bottom: -220px;
-    padding: 50px 0 5px;
+    padding: 45px 0 5px;
     color: #fff;
     background-color: #000;
    
@@ -249,7 +254,7 @@ code{
 .title {
 	font-size: 60px;
 	color: #000000;
-	margin: 10px 0 10px;
+	margin: 100px 0 10px;
 	padding: 40px 0 20px;
     text-transform: uppercase;
     text-align: center;
@@ -265,11 +270,19 @@ code{
 
 .nav-row{
   position: fixed;
-  padding: 0 10px 0 10px;
-  top: 85%;
+  padding: 0 0px 0 0px;
+  top: 45%;
   width: 98%;
+  z-index: 1;
 }
 
+.nav-row-loader{
+  position: fixed;
+  padding: 0 0px 0 0px;
+  top: 45%;
+  width: 98%;
+  z-index: 100;
+}
 
 .post-right{
 	float:right;
@@ -278,6 +291,13 @@ code{
 .post-left{
 	float:left;
 
+}
+
+
+
+.header-padding{
+	height: 50px;
+	width: 100%;
 }
 
 #page-content{

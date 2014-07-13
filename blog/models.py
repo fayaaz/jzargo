@@ -75,13 +75,12 @@ class BlogPost(models.Model):
         self.modified = datetime.datetime.today()
         
         #if it's ready to be published add modify date
-        if (not self.pub_date) or (self.pub_date=="0"):
-            if self.pub_bool:
-                self.pub_date = datetime.datetime.today()
+        if self.pub_bool:
+            self.pub_date = datetime.datetime.today()
+    
+        else:
+            self.pub_date = datetime.datetime.fromtimestamp(int("0"))
         
-            else:
-                self.pub_date = "0"
-            
             
         super(BlogPost, self).save() # Call the "real" save() method.
         

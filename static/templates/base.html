@@ -11,7 +11,7 @@
     <title> {% load title %} {% block pagetitle %}{% endblock%}</title>
 
     <!-- Bootstrap Core CSS -->
-   	
+   	<script src="{{STATIC_URL}}js/jquery.js"></script>
     <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 
@@ -29,7 +29,7 @@
 </head>
 
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body style="visibility:hidden;" id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container nav-container nav-month">
@@ -46,11 +46,7 @@
                 	<i class="fa fa-angle-double-up"></i>
                 </a>
                 
-                <a class="show-comment navbar-brand">
-					<i class="fa fa-comments-o"></i>
-				</a>
-                
-                <a class="navbar-brand" href="{% url "root" %}">
+                <a class="navbar-brand">
                 	<!-- span class="light">Joe</span> Shaw -->
                 </a>
             </div>
@@ -85,7 +81,12 @@
     	</div>
     </div>
     </nav>
-     <div class="header-section">
+
+<div class="header-padding row">
+</div>
+
+   <section id="page-header" data-image="{{STATIC_URL}}/img/header-bg.jpg"  class="content-section text-center">
+   	     <div class="header-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h1 class="title">{%get_title%}</h1>
@@ -94,10 +95,8 @@
                 </div>
             </div>
         </div>
-        
-   <section id="page-header" data-image="{{STATIC_URL}}/img/header-bg.jpg" data-cover-ratio="0.6"  class="content-section text-center">
     </section>	
-  
+ 
    
    <div id="page-content">
     {% block content %}
