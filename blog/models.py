@@ -74,10 +74,15 @@ class BlogPost(models.Model):
         
         self.modified = datetime.datetime.today()
         
-        #if it's ready to be published add modify date
+        #if it's ready to be published add modify date, otherwise set it to the epoch time
+        #(to workaround sort by date in django requiring a field to be not NULL) 
         if self.pub_bool:
-            self.pub_date = datetime.datetime.today()
-    
+            try:
+                if self.pub_date.year=="1970":
+                    self.pub_date = datetime.datetime.today()
+            except AttributeError:
+                self.pub_date = datetime.datetime.today()
+            
         else:
             self.pub_date = datetime.datetime.fromtimestamp(int("0"))
         
