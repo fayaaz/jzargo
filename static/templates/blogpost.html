@@ -13,7 +13,7 @@
             <div class="col-md-8 col-xs-offset-0 col-md-offset-2 comment-body">
                 {{ blogpost.1|safe }}
                 <p class="btnText"><a href="{% url "root" %}perm/{{blogpost.4}}">permalink</a> </p>
-                <p>Tags: {%for tag in blogpost.5%}{{tag}} {%endfor%}</p>
+                <p>{%for tag in blogpost.5%}<span class="label label-default">{{tag}}</span> {%endfor%}</p>
             </div>
         </div>
 <div class= "nav-row">

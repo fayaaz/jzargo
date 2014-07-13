@@ -71,7 +71,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(e){
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
-	    		$("div.loading-animation").css("display", "none");
+	    		$("div.loading-animation").animate({display: "none"}, 100);
 	    		//$( "#divError" ).append('No more pages!');
 	    		//$( "#divError" ).show( "fast");
 	      // handle json here
@@ -132,7 +132,7 @@ $(window).load(function(){
 
 function pageMove() {
 	
-    if ($(window).scrollTop() >= $('#page-content').position().top-60) {
+    if ($(window).scrollTop() >= $('#page-content').position().top-($(window).height()*0.4)) {
     	if (stateScr == 0){
         	$("div.nav-row, div.nav-row-loader").animate({top : "45%"}, "fast", "easeOutBack" );
         	stateScr = 1;
