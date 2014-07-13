@@ -58,7 +58,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(e){
 	e.preventDefault();
 	var urlAjax = $(this).attr('href');
 	var postid = $(this).parent('div').attr('id').substring(1);
-	$("div.loading-animation").css("visibility", "visible");
+	$("div.loading-animation").fadeIn("fast");
 	$.ajax({
 	    url: urlAjax,
 	    context: document.body,
@@ -71,7 +71,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(e){
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
-	    		$("div.loading-animation").css("visibility", "hidden");
+	    		$("div.loading-animation").css("display", "none");
 	    		//$( "#divError" ).append('No more pages!');
 	    		//$( "#divError" ).show( "fast");
 	      // handle json here
