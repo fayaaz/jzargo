@@ -164,7 +164,7 @@ code{
     width: 100%;
     margin-top: 0px;
 	margin-bottom: -220px;
-    padding: 45px 0 5px;
+    padding: 0 0 5px;
     color: #fff;
     background-color: #000;
    
@@ -178,8 +178,8 @@ code{
 .title {
 	font-size: 60px;
 	color: #000000;
-	margin: 100px 0 10px;
-	padding: 40px 0 20px;
+	margin: 10% 0 10px;
+	padding: 10% 0 20px;
     text-transform: uppercase;
     text-align: center;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;

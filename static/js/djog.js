@@ -71,7 +71,7 @@ $( "body" ).delegate( "a.postnav", 'click', function(e){
 	    	}
 	    	//if the returned data is JSON (error, no more pages etc.)
 	    	if (ct.indexOf('json') > -1) {
-	    		$("div.loading-animation").animate({display: "none"}, 100);
+	    		$("div.loading-animation").css("display", "none");
 	    		//$( "#divError" ).append('No more pages!');
 	    		//$( "#divError" ).show( "fast");
 	      // handle json here
