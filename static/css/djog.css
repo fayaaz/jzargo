@@ -27,6 +27,8 @@ body
   	-moz-background-size: cover;
   	-o-background-size: cover;
 	background-size: cover;
+	
+	overflow-x: hidden;
 }
 
 .months{
@@ -54,7 +56,7 @@ a:hover {
 
 .nav-container {
 	margin-left: 0px;
-	padding-right: 20px;
+	padding-right: 0px;
 	width: 100% !important;
 }
 
@@ -164,7 +166,7 @@ code{
     width: 100%;
     margin-top: 0px;
 	margin-bottom: -220px;
-    padding: 0 0 5px;
+    padding: 0 0 0px;
     color: #fff;
     background-color: #000;
    
@@ -192,14 +194,30 @@ code{
 	color: #000000;
 }
 
-.nav-row{
-  position: fixed;
-  padding: 0 0px 0 0px;
-  top: 45%;
-  width: 98%;
-  z-index: 1;
+@media screen and (min-width: 768px){
+	.nav-row{
+		position: fixed;
+		padding: 0 0px 0 0px;
+		top: 45%;
+		width: 98%;
+		overflow: hidden;
+  		z-index: 1;
+}
+}
+@media screen and (max-width: 768px) {
+	.nav-row{
+		position: fixed;
+		bottom: 0%;
+		left: 0%;
+		width: 100%;
+		z-index: 20;
+		background: rgba(0,0,0,0.7);
+	}
 }
 
+.row{
+	overflow: hidden;
+}
 .nav-row-loader{
   position: fixed;
   padding: 0 0px 0 0px;
@@ -217,7 +235,13 @@ code{
 
 }
 
-
+.btn-nav{
+	width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 10px 0 10px 0;
+    opacity: 0.8;
+}
 
 .header-padding{
 	height: 50px;
