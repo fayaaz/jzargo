@@ -17,4 +17,4 @@ Thanks to open source: django, bootstrap, grapelli, grayscale theme
 
 Demo:
 
-http://54.194.19.43/
+http://www.jzargo.com
