@@ -45,7 +45,8 @@ TEMPLATE_LOADERS = (
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'taggit',
     'django.contrib.admin',
     'django.contrib.auth',
