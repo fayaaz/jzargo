@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-1 col-md-offset-2 col-xs-offset-0 col-xs-12 ">
 		{% autoescape on %}
-			<div class="btn btn-circle btn-user" style="background-image: url(http://robohash.org/{{ comment.0.split|join:'_'}}.png?size=75x75&set=set1);">
+			<div class="btn btn-circle btn-user" style="background-image: url(http://robohash.org/{{ comment.0.split|join:'_'|cut:"\'"}}.png?size=75x75&set=set1);">
 	 	{% endautoescape %}
 	 		</div>
 	 	</div>
