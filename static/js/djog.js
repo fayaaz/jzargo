@@ -173,10 +173,16 @@ $("body").delegate("a.post-link", 'click', function(e){
 });
 
 function applyClasses(){
-	$("pre").addClass("prettyprint");
+	$("pre").addClass("prettyprint linenums");
 	$("code").addClass("prettyprint");
 	$("div.comment-body").find("table").addClass("table table-condensed");
 	PR.prettyPrint();
+	$("code").each(function() {
+         if ($(this).text() == "") {
+                   $(this).html("<code> <code>");
+         }  
+	});
+	$("li.L1, li.L3, li.L5, li.L7, li.L9").css({'background' : '#05242E'});
 }	
 
 function pageRefresh(content, direction){
