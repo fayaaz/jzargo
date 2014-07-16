@@ -15,7 +15,7 @@ def get_comments_post(id):
     commentsList = []
     for comment in comments:
         
-        commentsList.append((comment.name, comment.created, comment.comment))
+        commentsList.append((comment.name, comment.created, comment.comment, comment.name.replace("\'",'')))
     
     return commentsList
 
