@@ -369,3 +369,12 @@ h3{
     -webkit-transform: scale(1.0);
   }
 }
+
+code {
+	font-family: monospace;
+}
+
+pre.prettyprint{
+	padding: 10px 0 10px 0;
+	width: 90%;
+}

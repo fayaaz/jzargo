@@ -182,7 +182,7 @@ function applyClasses(){
                    $(this).html("<code> <code>");
          }  
 	});
-	$("li.L1, li.L3, li.L5, li.L7, li.L9").css({'background' : '#05242E'});
+	$("li.L1, li.L3, li.L5, li.L7, li.L9").css({'background' : '#333333'});
 }	
 
 function pageRefresh(content, direction){
