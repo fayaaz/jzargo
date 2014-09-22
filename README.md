@@ -1,9 +1,7 @@
 jzargo
 ======
 
-Khajiit got yo' back
-
-It's just a simple blog, ennit?
+A very simple blog, for personal use.
 
 Features:
 
@@ -13,7 +11,7 @@ Doesn't have:
 
 Almost everything else
 
-Thanks to open source: django, bootstrap, grapelli, grayscale theme
+Powered by lots of open source including: Django, Bootstrap
 
 Demo:
 
