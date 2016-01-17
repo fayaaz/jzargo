@@ -10,7 +10,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'jzargo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'blog.views.index', name='root'),
     url(r'^next/(\w+)/$', 'blog.views.next_post', name='get_next'),
