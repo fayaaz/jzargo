@@ -15,6 +15,7 @@ def month_post_items(filterObjs):
         if first:
             first = False
             month = obj.pub_date.strftime('%B %Y')
+            print month
         blogPosts.append((obj.title, obj.body, obj.pub_date, obj.image, obj.id))
     
     return{'blogposts': blogPosts,
@@ -121,10 +122,13 @@ def add_comment(request, id):
 def get_month(request):
     
     if request.method == 'GET':
+
         context = RequestContext(request)
         monthYear=request.GET['month'].split('-')
         month = monthYear[0]
         year = monthYear[1]
         posts = blog.posts.get_posts_by_month(month, year)
+
         postItems = month_post_items(posts)
+
         return render_to_response('month.html', postItems, context)

@@ -3,6 +3,7 @@ db.sqlite3
 *.project
 *.pydevproject
 *.log
+*.idea
 error.log.save
 media/upload/blogpost/steamos.jpg
 static/img/bg.jpg

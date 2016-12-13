@@ -51,7 +51,7 @@ class BlogPost(models.Model):
     '''A gallery for projects and art pieces'''
     
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField(default="0", editable=False)
+    pub_date = models.DateTimeField(default="0", editable=False, null=True, blank=True)
     pub_bool = models.BooleanField('Published?', default=False)
     body_markdown = models.TextField('Entry Body', help_text='Write in Markdown! <a href=\'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet/\'  target=\'_blank\'>Help</a>', blank=True)
     body = models.TextField('Entry HTML', help_text='HTML from markdown', blank=True)
@@ -77,12 +77,12 @@ class BlogPost(models.Model):
         #if it's ready to be published add modify date, otherwise set it to the epoch time
         #(to workaround sort by date in django requiring a field to be not NULL) 
         if self.pub_bool:
-            try:
-                if self.pub_date.year=="1970":
-                    self.pub_date = datetime.datetime.today()
-            except AttributeError:
+            if not self.id:
                 self.pub_date = datetime.datetime.today()
-            
+            else:
+                orig = BlogPost.objects.get(pk=self.pk)
+                if not orig.pub_bool:
+                    self.pub_date = datetime.datetime.today()
         else:
             self.pub_date = datetime.datetime.fromtimestamp(int("0"))
         
